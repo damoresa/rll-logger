@@ -5,6 +5,7 @@ src/
 tests/
 *.ts
 *.iml
+*.log
 tsconfig\.json
 tslint\.json
 webpack\.config\.js
