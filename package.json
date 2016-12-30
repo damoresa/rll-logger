@@ -1,6 +1,6 @@
 {
   "name": "rll-logger",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Rll-Logger library test.",
   "main": "lib/bundle/rll-logger.umd.js",
   "typings": "lib/index.d.ts",

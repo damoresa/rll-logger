@@ -1,11 +1,13 @@
+coverage/
 node_modules/
 .idea/
 karma/
 src/
 tests/
-*.ts
+index.ts
 *.iml
 *.log
+.npmignore
 tsconfig\.json
 tslint\.json
 webpack\.config\.js
