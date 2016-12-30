@@ -1,0 +1,40 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "isolatedModules": false,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "allowSyntheticDefaultImports": true,
+        "declaration": true,
+        "noImplicitAny": false,
+        "noImplicitUseStrict": false,
+        "removeComments": true,
+        "noEmitHelpers": false,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "sourceMap": true,
+        "outDir": "./lib",
+        "lib": [
+            "dom",
+            "es6"
+        ],
+        "types": [
+            "hammerjs",
+            "jasmine",
+            "node"
+        ]
+    },
+    "files": [
+        "index.ts",
+        "./src/index.ts",
+        "./src/module/logger.module.ts",
+        "./src/service/logger.service.ts"
+    ],
+    "awesomeTypescriptLoaderOptions": {
+        "forkChecker": true,
+        "useWebpackText": true
+    },
+    "compileOnSave": false
+}
