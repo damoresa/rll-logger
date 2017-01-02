@@ -16,7 +16,7 @@ describe('RllLoggerService', () => {
         TestBed.configureTestingModule({
             imports: [
                 HttpModule,
-                RllLoggerModule.forRoot(Level.ERROR)
+                RllLoggerModule.forRoot(Level.ERROR, 'loggingendpoint')
             ],
             providers: [
                 MockBackend,
