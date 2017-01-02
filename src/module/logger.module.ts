@@ -1,14 +1,29 @@
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
-import { LoggerService } from './../service/logger.service';
+import { Level } from './../level.enum';
+import { LOG_ENDPOINT, LOG_LEVEL, LoggerService } from './../service/logger.service';
 
 @NgModule({
     imports: [
         HttpModule
-    ],
-    providers: [
-        LoggerService
     ]
 })
-export class RllLoggerModule {}
+export class RllLoggerModule {
+    static forRoot(level: Level = Level.ERROR, endpoint?: string): ModuleWithProviders {
+        return {
+            ngModule: RllLoggerModule,
+            providers: [
+                {
+                    provide: LOG_LEVEL,
+                    useValue: level
+                },
+                {
+                    provide: LOG_ENDPOINT,
+                    useValue: endpoint
+                },
+                LoggerService
+            ]
+        };
+    }
+}

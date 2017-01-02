@@ -1,33 +1,60 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Inject, Injectable, OpaqueToken } from '@angular/core';
 import { Http } from '@angular/http';
 
 import 'rxjs/add/operator/map';
 
+import { Level } from './../level.enum';
+
+export const LOG_LEVEL = new OpaqueToken('LogLevel');
+export const LOG_ENDPOINT = new OpaqueToken('LogEndpoint');
+
 @Injectable()
-export class LoggerService implements OnInit {
+export class LoggerService {
 
-    private loggingEndpoint: string;
+    private _endpoint: string;
+    private _level: Level;
 
-    constructor(private http: Http) {}
-
-    ngOnInit(): void {
-        this.loggingEndpoint = 'logging';
+    constructor(
+        @Inject(LOG_LEVEL) level: Level,
+        @Inject(LOG_ENDPOINT) endpoint: string,
+        private http: Http) {
+        this._level = level;
+        this._endpoint = endpoint;
     }
 
     debug(message: string): void {
 
-        let logTrace = {
-            trace: message
-        };
-
-        console.log(JSON.stringify(logTrace));
-        this.logToServer(logTrace);
+        this.log(message, Level.DEBUG);
     }
 
-    private logToServer(logTrace: any) {
+    error(message: string): void {
 
-         this.http.post(this.loggingEndpoint, logTrace)
-             .map((response) => response ? response.json() : { })
-             .subscribe((response) => console.log(JSON.stringify(response)));
+        this.log(message, Level.ERROR);
+    }
+
+    private log(message: string, level: Level) {
+
+        if (this._level >= level)
+        {
+            // Validate that the console object exists
+            if (console && console.log)
+            {
+                console.log(message);
+            }
+
+            this.logToServer(message);
+        }
+    }
+
+    private logToServer(message: string) {
+
+        if (this._endpoint) {
+
+            let logTrace = {
+                trace: message
+            };
+
+            this.http.post(this._endpoint, logTrace);
+        }
     }
 }

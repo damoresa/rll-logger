@@ -7,14 +7,15 @@ In order to use **rll-logger** in your application, you should follow these step
 ```bash
 npm install --save rll-logger
 ```
-2. Import it on your application:
+2. Import it on your application.  
+You can configure the *logging level* by injecting the desired level using the *Level* class.
 ```typescript
-import { RllLoggerModule } from 'rll-logger';
+import { Level, RllLoggerModule } from 'rll-logger';
 
 @NgModule({
     imports: [
       ...
-      RllLoggerModule,
+      RllLoggerModule.forRoot(Level.DEBUG),
       ...
     ],
     declarations: [
