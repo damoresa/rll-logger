@@ -50,7 +50,7 @@ export class LoggerService {
 
         if (this._endpoint) {
 
-            let logTrace = {
+            const logTrace = {
                 trace: message
             };
 
