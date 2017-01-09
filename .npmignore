@@ -8,6 +8,6 @@ index.ts
 *.iml
 *.log
 .npmignore
-tsconfig\.json
-tslint\.json
-webpack\.config\.js
+tsconfig.json
+tslint.json
+webpack.config.js
